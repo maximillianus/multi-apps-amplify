@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "multiappsamplify0d114b1d": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
