@@ -4,12 +4,12 @@ applications:
       phases:
         preBuild:
           commands:
-            - ls -l
-            - amplify pull --appId $APP_ID --envName $AWS_BRANCH --y
             - yarn install
         build:
           commands:
             - yarn run build
+            - ls -l
+            - cp -rf ../shared/src/* src/
             - cat src/aws-exports.js
       artifacts:
         baseDirectory: build
@@ -18,4 +18,4 @@ applications:
       cache:
         paths:
           - node_modules/**/*
-    appRoot: admin
+    appRoot: www
