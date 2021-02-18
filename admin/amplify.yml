@@ -1,0 +1,22 @@
+version: 1
+applications:
+  - frontend:
+      phases:
+        preBuild:
+          commands:
+            - yarn install
+            - amplify pull --appId $APP_ID --envName $AWS_BRANCH --y
+            - rm -Rf amplify/
+            - ls -l
+        build:
+          commands:
+            - yarn run build
+            - cat src/aws-exports.js
+      artifacts:
+        baseDirectory: build
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+    appRoot: admin
